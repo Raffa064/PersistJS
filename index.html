@@ -102,6 +102,26 @@ toggler.onclick = () => {
 }
 </pre>
         </code>
+        <h1>UI State shortcuts</h1>
+        <p>The UI state shortcuts are a simple and easy way to store values from inputs, like checkboxes, selects, input ranges, text, number, and other inputs.</p>
+        <code>
+            <pre>
+const { createPersistentState, createUIState } = Persist()
+
+const state = createPersistentState({
+    text: 'Showcase text', // Default value for '#text' input 
+}, 'showcase-state')
+
+const ui = createUIState(state)
+
+ui.input('text') // It refers to '#text' input
+</pre>
+        </code>
+        <p>
+            The <em>input</em> function need a element or element id as param. When passed a element, it's id will be used as key for store the value.<br>
+            Note that this function works for all elements in what you can set it's value with ".value", including select, and inputs (text, number, range, etc).
+        </p>
+        <p>But checkboxes can't use <em>ui.input(...)</em>, because it's value is stored in ".checked", and you need to replace <em>ui.input(...)</em> into <em>ui.checkbox(...)</em>.</p>
     </section>
     <footer>
         <a href="https://gihtub.com/Raffa064">Raffa064</a>

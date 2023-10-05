@@ -126,6 +126,10 @@ ul {
     padding-left: 10px;
 }
 
+em {
+    color: #aaa;
+}
+
 footer {
     display: flex;
     flex-direction: row;
@@ -144,7 +148,6 @@ footer a {
     color: #bbb;
     font-weight: bold;
 }
-
 
 footer a+a {
     border-left: 1px solid #aaa;
