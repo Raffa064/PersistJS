@@ -3,155 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="stylesheet" href="index.css">
     <title>Showcase de Armazenamento de Estado</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            border: none;
-            outline: none;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            width: 100vw;
-            min-height: 100vh;
-            background: linear-gradient(#6E2263, #c8482d);
-            color: #ccc;
-        }
-
-        section {
-            max-width: min(800px, calc(100vw - 20px));
-            min-height: 100vh;
-            margin: auto;
-        }
-
-        .showcase {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            padding: 10px 20px;
-            background-color: #1e252f;
-            border-radius: 4px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        h1 {
-            color: #ddd;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 5px;
-            background: transparent;
-            border: 2px solid #434554;
-            color: #bbb;
-            margin-bottom: 5px;
-            border-radius: 4px;
-            transition: .2s;
-        }
-
-        input[type="text"]:focus,
-        input[type="number"]:focus {
-            border: 2px solid #0088ff;
-        }
-
-        input[type="range"] {
-            width: 100%;
-        }
-
-        .about {
-            padding: 10px 20px;
-            margin-bottom: 10px;
-            background: #1e252f;
-            border-radius: 4px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        p {
-            margin-block: 10px;
-        }
-
-        a {
-            color: #08f;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        code {
-            display: block;
-            padding: 10px 20px;
-            margin-block: 10px;
-            background: #2e353f;
-            color: #bbb;
-            border-radius: 4px;
-            overflow-x: scroll;
-            scrollbar-width: none;
-            scrollbar-color: transparent;
-        }
-
-        code::-webkit-scrollbar {
-            display: none;
-            width: 0;
-            height: 0;
-        }
-
-        code,
-        pre {
-            font-family: monospace;
-        }
-
-        ul {
-            padding-left: 10px;
-        }
-
-        footer {
-            display: flex;
-            flex-direction: row;
-            max-width: min(800px, calc(100vw - 20px));
-            padding: 10px 20px;
-            margin: auto;
-            margin-bottom: 10px;
-            background: #1e252f;
-            border-radius: 4px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        footer a {
-            flex: 1;
-            text-align: center;
-            color: #bbb;
-            font-weight: bold;
-        }
-
-
-        footer a+a {
-            border-left: 1px solid #aaa;
-        }
-    </style>
 </head>
 
 <body>
@@ -159,10 +16,26 @@
         <div class="container">
             <h1>Showcase</h1>
             <p><em>All the following inputs will store it's values with persist.js</em></p>
-            <form><label for="text">Enter a text input: </label> <input type="text" id="text" name="text"> <label for="number">Enter a number input:</label> <input type="number" id="number" name="number">
-                <div class="slider-container"> <label for="slider">Pick a value:</label> <input type="range" id="slider" name="slider" min="0" max="100" step="1"> </div>
-                <div class="checkbox-container"> <label for="checkbox"> <input type="checkbox" id="checkbox" name="checkbox"> Checkbox Option </label> </div>
-            </form>
+            <label for="text">Enter a text input: </label>
+            <input type="text" id="text" name="text">
+            <label for="number">Enter a number input:</label>
+            <input type="number" id="number" name="number">
+            <label for="slider">Pick a value:</label>
+            <input type="range" id="slider" name="slider" min="0" max="100" step="1">
+            <label for="contry">
+                Select your contry: 
+                <select id="contry" name="country" style="float: right">
+                    <option value="usa">United States</option>
+                    <option value="canada">Canada</option>
+                    <option value="br">Brazil</option>
+                    <option value="uk">United Kingdom</option>
+                </select>
+            </label>
+            <label for="checkbox">
+                <input type="checkbox" id="checkbox" name="checkbox"> 
+                Checkbox Option
+            </label>
+            <button id="button">You have clicked <span id="clicks"></span> times</button>
         </div>
     </section>
     <section class="about">

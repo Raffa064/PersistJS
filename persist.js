@@ -84,10 +84,56 @@ function Persist() {
         return proxy
     }
 
+    function createUIState(state) {
+        function $(element) {
+            if (typeof element === 'string') {
+                return document.querySelector('#'+element)
+            }
+            
+            return element
+        }
+        
+        function checkbox(checkboxElt) {
+            checkboxElt = $(checkboxElt)
+            const id = checkboxElt.id
+
+            if (!id) {
+                throw new Error("Can't create state for element without id")
+            }
+
+            checkboxElt.checked = state[id]
+
+            checkboxElt.addEventListener('click', () => {
+                state[id] = checkboxElt.checked
+            })
+        }
+
+        function input(inputElt) {
+            inputElt = $(inputElt)
+            const id = inputElt.id
+
+            if (!id) {
+                throw new Error("Can't create state for element without id")
+            }
+
+            inputElt.value = state[id]
+
+            inputElt.addEventListener('input', () => {
+                state[id] = inputElt.value
+            })
+        }
+        
+        return {
+            checkbox,
+            input
+        }
+    }
+
     return {
         createMockPersistMode,
         createDebugPersistMode,
         createLocalStoragePersistMode,
-        createPersistentState
+        createPersistentState,
+        createUIState
     }
 }

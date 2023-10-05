@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(#6E2263, #c8482d);
+    color: #ccc;
+}
+
+section {
+    max-width: min(800px, calc(100vw - 20px));
+    min-height: 100vh;
+    margin: auto;
+}
+
+.showcase {
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px 20px;
+    background-color: #1e252f;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+    color: #ddd;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    background: transparent;
+    border: 2px solid #434554;
+    color: #bbb;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: .2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border: 2px solid #0088ff;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+button {
+    display: block;
+    margin: auto;
+    padding: 10px 20px;
+    background: #08f;
+    color: #eee;
+    border-radius: 4px;
+}
+
+.about {
+    padding: 10px 20px;
+    margin-block: 10px;
+    background: #1e252f;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+}
+
+p {
+    margin-block: 10px;
+}
+
+a {
+    color: #08f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    display: block;
+    padding: 10px 20px;
+    margin-block: 10px;
+    background: #2e353f;
+    color: #bbb;
+    border-radius: 4px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scrollbar-color: transparent;
+}
+
+code::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+code,
+pre {
+    font-family: monospace;
+}
+
+ul {
+    padding-left: 10px;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    max-width: min(800px, calc(100vw - 20px));
+    padding: 10px 20px;
+    margin: auto;
+    margin-bottom: 10px;
+    background: #1e252f;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+}
+
+footer a {
+    flex: 1;
+    text-align: center;
+    color: #bbb;
+    font-weight: bold;
+}
+
+
+footer a+a {
+    border-left: 1px solid #aaa;
+}
