@@ -96,7 +96,7 @@
             color: #08f;
             text-decoration: none;
         }
-        
+
         a:hover {
             text-decoration: underline;
         }
@@ -109,6 +109,14 @@
             color: #bbb;
             border-radius: 4px;
             overflow-x: scroll;
+            scrollbar-width: none;
+            scrollbar-color: transparent;
+        }
+
+        code::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
         }
 
         code,
@@ -119,7 +127,7 @@
         ul {
             padding-left: 10px;
         }
-        
+
         footer {
             display: flex;
             flex-direction: row;
@@ -131,16 +139,16 @@
             border-radius: 4px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
         }
-        
+
         footer a {
             flex: 1;
             text-align: center;
             color: #bbb;
             font-weight: bold;
         }
-        
-        
-        footer a + a {
+
+
+        footer a+a {
             border-left: 1px solid #aaa;
         }
     </style>
@@ -150,6 +158,7 @@
     <section class="showcase">
         <div class="container">
             <h1>Showcase</h1>
+            <p><em>All the following inputs will store it's values with persist.js</em></p>
             <form><label for="text">Enter a text input: </label> <input type="text" id="text" name="text"> <label for="number">Enter a number input:</label> <input type="number" id="number" name="number">
                 <div class="slider-container"> <label for="slider">Pick a value:</label> <input type="range" id="slider" name="slider" min="0" max="100" step="1"> </div>
                 <div class="checkbox-container"> <label for="checkbox"> <input type="checkbox" id="checkbox" name="checkbox"> Checkbox Option </label> </div>
@@ -164,9 +173,9 @@
         <code>&lt;script>https://cdn.jsdelivr.net/gh/Raffa064/PersistJS@main/persist.js&lt;/script></code>
 
         <p>You can also download the raw file in it's <a href="https://github.com/Raffa064/PersistJS">repo</a></p>
-        <p>To use the persist.js, you just need to create pesistent state object with the following code:</p> 
+        <p>To use the persist.js, you just need to create pesistent state object with the following code:</p>
         <code>
-<pre> 
+            <pre>
 const { createPersistentState } = Persist()
 const state = createPersistentState(defaultState, persistMode) 
 </pre>
@@ -178,7 +187,7 @@ const state = createPersistentState(defaultState, persistMode)
         </ul>
         <p>Example 1: Using default local storage mode</p>
         <code>
-<pre>
+            <pre>
 const { createPersistentState } = Persist() 
 const state = createPersistentState({
     prop0: 'Default value',
@@ -189,13 +198,35 @@ const state = createPersistentState({
         </code>
         <p>Example 2: Using mock storage mode</p>
         <code>
-<pre>
+            <pre>
 const { createPersistentState, createMockPersistMode } = Persist() 
 const state = createPersistentState({
     prop0: 'Default value',
     prop1: 34,
     prop2: true
 }, createMockPersistMode('state-name-example')) // This mode won't save anything (only log)
+</pre>
+        </code>
+        <p>An possible use case for persist.js is in local user settings, like a dark mode flag:</p>
+        <code>
+            <pre>
+const { createPersistentState } = Persist() 
+
+const settings = createPersistentState({
+    darkMode: true
+}, 'settings') 
+
+const toggler = document.querySelector('#dark-mode-toggler')
+
+toggler.checked = settings.darkMode // Load current value
+
+toggler.onclick = () => {
+    settings.darkMode = toggler.checked // Change value
+    
+    if (settings.darkMode) {
+        applyDarkMode()
+    }
+}
 </pre>
         </code>
     </section>

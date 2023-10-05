@@ -61,7 +61,7 @@ function Persist() {
             persistMode = createLocalStoragePersistMode(persistMode)
         }
 
-        const { save, load } = persist
+        const { save, load } = persistMode
 
         Object.assign(defaultObj, load(defaultObj)) // merge default and loaded objects (keep functions)
 
