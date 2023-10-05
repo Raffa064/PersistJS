@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase de Armazenamento de Estado</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            background: linear-gradient(#6E2263, #c8482d);
+            color: #ccc;
+        }
+
+        section {
+            max-width: min(800px, calc(100vw - 20px));
+            min-height: 100vh;
+            margin: auto;
+        }
+
+        .showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px 20px;
+            background-color: #1e252f;
+            border-radius: 4px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            color: #ddd;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            background: transparent;
+            border: 2px solid #434554;
+            color: #bbb;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            transition: .2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border: 2px solid #0088ff;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        .about {
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background: #1e252f;
+            border-radius: 4px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        p {
+            margin-block: 10px;
+        }
+
+        a {
+            color: #08f;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            display: block;
+            padding: 10px 20px;
+            margin-block: 10px;
+            background: #2e353f;
+            color: #bbb;
+            border-radius: 4px;
+            overflow-x: scroll;
+        }
+
+        code,
+        pre {
+            font-family: monospace;
+        }
+
+        ul {
+            padding-left: 10px;
+        }
+        
+        footer {
+            display: flex;
+            flex-direction: row;
+            max-width: min(800px, calc(100vw - 20px));
+            padding: 10px 20px;
+            margin: auto;
+            margin-bottom: 10px;
+            background: #1e252f;
+            border-radius: 4px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+        }
+        
+        footer a {
+            flex: 1;
+            text-align: center;
+            color: #bbb;
+            font-weight: bold;
+        }
+        
+        
+        footer a + a {
+            border-left: 1px solid #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="showcase">
+        <div class="container">
+            <h1>Showcase</h1>
+            <form><label for="text">Enter a text input: </label> <input type="text" id="text" name="text"> <label for="number">Enter a number input:</label> <input type="number" id="number" name="number">
+                <div class="slider-container"> <label for="slider">Pick a value:</label> <input type="range" id="slider" name="slider" min="0" max="100" step="1"> </div>
+                <div class="checkbox-container"> <label for="checkbox"> <input type="checkbox" id="checkbox" name="checkbox"> Checkbox Option </label> </div>
+            </form>
+        </div>
+    </section>
+    <section class="about">
+        <h1>About</h1>
+        <p>This page is a showcase for persist.js, a simple way to store values on your static pages.</p>
+        <h1>How to use</h1>
+        <p>At first, you'll need to get persist.js by adding the following script tag into your html file:</p>
+        <code>&lt;script>https://cdn.jsdelivr.net/gh/Raffa064/PersistJS@main/persist.js&lt;/script></code>
+
+        <p>You can also download the raw file in it's <a href="https://github.com/Raffa064/PersistJS">repo</a></p>
+        <p>To use the persist.js, you just need to create pesistent state object with the following code:</p> 
+        <code>
+<pre> 
+const { createPersistentState } = Persist()
+const state = createPersistentState(defaultState, persistMode) 
+</pre>
+        </code>
+        <p>If you see, this code has some undeclared variables:</p>
+        <ul>
+            <li><strong>defaultState</strong>: Is a object with all initial state values</li>
+            <li><strong>persistMode</strong>: It can be a object with custom logic to store data, or a string that will be used as key for store data in local storage.</li>
+        </ul>
+        <p>Example 1: Using default local storage mode</p>
+        <code>
+<pre>
+const { createPersistentState } = Persist() 
+const state = createPersistentState({
+    prop0: 'Default value',
+    prop1: 34,
+    prop2: true
+}, 'state-name-example') // Data stored in localStorage.stateNameExample
+</pre>
+        </code>
+        <p>Example 2: Using mock storage mode</p>
+        <code>
+<pre>
+const { createPersistentState, createMockPersistMode } = Persist() 
+const state = createPersistentState({
+    prop0: 'Default value',
+    prop1: 34,
+    prop2: true
+}, createMockPersistMode('state-name-example')) // This mode won't save anything (only log)
+</pre>
+        </code>
+    </section>
+    <footer>
+        <a href="https://gihtub.com/Raffa064">Raffa064</a>
+        <a href="https://gihtub.com/Raffa064/PersistJS">Open Source</a>
+        <a href="mailto:raffaddtg@gmail.com?subject=Persist.js support">Support</a>
+        <a href="mailto:raffaddtg@gmail.com?subject=Persist.js Report">Report</a>
+    </footer>
+    <script src="./persist.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
